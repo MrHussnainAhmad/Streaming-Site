@@ -1,6 +1,6 @@
-# StreamMe - Netflix-Style P2P Video Streaming Platform
+# StreamMe - Netflix-Style Video Streaming Platform
 
-A modern video streaming platform built with Next.js 14 that uses WebTorrent for P2P streaming, eliminating CDN costs while providing smooth 4K streaming.
+A modern video streaming platform built with Next.js 14 that uses CDN streaming, Low CDN costs while providing smooth 4K streaming.
 
 ## 🚀 Features
 
