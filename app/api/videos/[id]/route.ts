@@ -6,12 +6,13 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
 
-    const video = await Video.findById(params.id)
+    const { id } = await params;
+    const video = await Video.findById(id)
       .select('-magnetLink')
       .lean();
 

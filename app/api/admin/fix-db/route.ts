@@ -37,10 +37,10 @@ export async function POST(request: NextRequest) {
       indexes: indexes
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fixing database:', error);
     return NextResponse.json(
-      { error: 'Failed to fix database', details: error.message },
+      { error: 'Failed to fix database', details: error?.message },
       { status: 500 }
     );
   }
