@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Signup error:', error);
-    if (error.code === 11000) {
+    if (typeof error === 'object' && error !== null && 'code' in error && error.code === 11000) {
       return NextResponse.json(
         { error: 'User with this email already exists' },
         { status: 400 }

@@ -53,6 +53,8 @@ export async function GET() {
 
 // PUT update site settings (admin only)
 export async function PUT(request: NextRequest) {
+  let siteName, logo, favicon, enableUserAuth, enableSecondaryFooter, secondaryFooterContent, enableAds, adType, googleAdSenseId, customAdImage, customAdLink;
+
   try {
     // Check admin authentication
     const authCookie = request.cookies.get('admin-auth');
@@ -68,7 +70,8 @@ export async function PUT(request: NextRequest) {
     if (!body || typeof body !== 'object') {
       return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
     }
-    const { 
+    
+    ({ 
       siteName, 
       logo,
       favicon, 
@@ -80,7 +83,7 @@ export async function PUT(request: NextRequest) {
       googleAdSenseId,
       customAdImage,
       customAdLink
-    } = body;
+    } = body);
     
     let settings = await SiteSettings.findOne();
     console.log('Found existing settings:', settings ? 'Yes' : 'No');
